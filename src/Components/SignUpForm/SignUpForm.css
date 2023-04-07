@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+form>.input-group{
+    padding: 0.3rem;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.input-group>input{
+    width: 100%;
+    border-radius: 10px;
+}
+
+#submit-btn{
+    margin: 2rem 0;
+    color: green;
+}
+
+nput {border:0;outline:0;}
+input:focus {outline:none!important;}

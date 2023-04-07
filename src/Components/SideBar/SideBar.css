@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#welcome-container{
+    margin: 0 0 0.5rem 0;
+}
+
+#welcome-container>h3{
+    font-family: 'Inter', sans-serif;
+}
+
+#welcome-container>h3::before{
+    content: url('../../assets/check.png');
+    margin-right: 1rem;
+}
+
+.bank-accounts{
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+#side-bar-container{
+    outline: 2px solid red;
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0);
+    border-radius: 5px;
+}
+
+#side-bar-links{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    overflow-x: hidden;
+    padding: 0 1rem;
+}
+
+#side-bar-links>h4{
+    font-family: 'Sora', sans-serif;
+}
+
+#side-bar-links>h4:hover{
+    color: rgb(100, 99, 99);
+    transition: 1s;
+}

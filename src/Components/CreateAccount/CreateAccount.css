@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --createAccountMaxWidth:600px;
+}
+
+.input-group{
+    width: 100%;
+    padding: 1rem;
+}
+
+.input-group>input{
+    width: 100%;
+    padding: 0.5rem;
+}
+
+#create-account-container{
+    width: 90%;
+    margin: 0 auto;
+    max-width: var(--createAccountMaxWidth);
+    position: absolute;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto;
+    top: 300px; 
+    height: 300px;
+    border-radius: 10px;
+    border: 0;
+    padding: 1rem;
+    transition: 1s;
+}
+
+#create-account-container>h4{
+    color: white;
+}
+
+#account-types{
+    width: 100%;
+    padding: 0.5rem 0;
+}
+
+#create-account-btn{
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    border: 0;
+    font-size: 1rem;
+}
+
+#form-container{
+    display: block;
+    width: 100%;
+}
+
+#exit-button{
+    position: absolute;
+    top: 1px;
+    right: 5px;
+}
+
+.hidden{
+    display: none;
+}

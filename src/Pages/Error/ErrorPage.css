@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&family=Raleway:wght@600&family=Space+Grotesk&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#error-page-container{
+    min-height: 100vh;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#error-container>h2{
+    font-family: 'Oswald', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
+    color: #fff;
+}
+
+#left-back-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0.5rem 0 0 0.5rem;
+}

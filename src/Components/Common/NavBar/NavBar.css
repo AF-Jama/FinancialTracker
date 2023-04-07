@@ -1,0 +1,14 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav{
+    z-index: 3;
+}
+
+.hide{
+    display: none;
+    /* border: 2px solid red; */
+}

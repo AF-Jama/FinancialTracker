@@ -1,23 +1,31 @@
 import logo from './logo.svg';
+import Header from './Components/Header';
+import LandingPage from './Pages/LandingPage';
+import DashBoardPage from './Pages/DashboardPage';
+import ErrorPage from './Pages/Error';
+import SideBar from './Components/SideBar';
+import CreateAccount from './Components/CreateAccount';
+import SignUpPage from './Pages/SignUpPage';
+import LoginPage from './Pages/LoginPage';
+import { Routes,Route } from 'react-router';
+import { useAuth0 } from '@auth0/auth0-react';
 import './App.css';
 
 function App() {
+  const { loginWithRedirect } = useAuth0();
+  console.log(process.env);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path='/' element={<LandingPage/>}/>
+        <Route path='/dashboard' element={<DashBoardPage/>}/>
+        <Route path='/error' element={<ErrorPage/>}/>
+        <Route path='/side' element={<SideBar/>}/>
+        <Route path='/create' element={<SignUpPage/>}/>
+        <Route path='/login' element={<LoginPage/>}/>
+      </Routes>
+
     </div>
   );
 }

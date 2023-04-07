@@ -1,0 +1,61 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum AccountType {
+  Basic
+  Business
+  Corporate
+} // account type enum
+
+enum TransactionType {
+  Withdrawal
+  Deposit
+  Transfer
+}
+
+enum AccountLimit {
+  TenThousand 
+  TwoHundredThousand
+  TwoMillion
+}
+
+
+model User{
+  id String @id @default(uuid()) // user uuid generated on user creation
+  username String @unique @db.VarChar(20)
+  email String @unique
+  password String
+  email_Verified Boolean @default(false)
+  accounts Account[]
+}
+
+model Account{
+  accountId String @id @default(uuid())
+  accountLimit BigInt
+  accountType AccountType
+  balance Float @default(0)
+  user User @relation(fields: [userId],references: [id])
+  userId String // userId foreign key which is linked to user id (many to one)
+  transaction Transactions[] @relation("transaction_1") 
+  transaction2 Transactions[] @relation("transaction_2")
+}
+
+model Transactions{
+  transactionId String @id @default(uuid())
+  transactionType TransactionType
+  transactionAmount Float
+  description String? // transaction optional string
+  account Account @relation("transaction_1",fields:[accountId],references: [accountId]) // maps relationship between Transaction accountId and Account accountId 
+  account2 Account? @relation("transaction_2",fields: [accountTo],references: [accountId]) // maps relationship betweeen Transaction AccountTo and Account AccountId
+  accountTo String? // accountTo uuid (applicable to transfers between accounts), is nullable during deposit and withdrawal transactions
+  accountId String
+}

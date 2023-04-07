@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --LoginPageMaxWidth:2000px;
+}
+
+#login-page-container{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#login-page-inner-container{
+    flex: 1;
+    width: 98%;
+    max-width: var(--LoginPageMaxWidth);
+    margin: 0 auto;
+    background-color: lightcyan;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-column{
+    flex: 1;
+}
+
+.login-column:nth-child(2){
+    display: none;
+}
+
+.login-column>img{
+    margin: 0.5rem auto;
+}
+
+#login-form-container>#submit-btn{
+    width: 95%;
+    max-width: 300px;
+    background-color: #000;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    color: white;
+    font-size: 1.2rem;
+}
+
+#login-form-container>.input-group{
+    /* border: 2px solid red; */
+    max-width: 400px;
+}
+
+.input-group>input{
+    padding: 0.8rem;
+}
+
+#login-page-inner-container>a{
+    margin: 5rem 0 0 0;
+}
+
+@media screen and (min-width:800px){
+    .login-column:nth-child(2){
+        display: block;
+        background-image: url('../../assets/login.svg') ;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    .login-column:nth-child(1){
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0 1.5rem 0 0;
+    }
+
+    #login-page-inner-container{
+        display: flex;
+        flex-direction: row;
+        padding: 1rem;
+    }
+}
