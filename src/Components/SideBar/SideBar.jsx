@@ -22,7 +22,7 @@ const SideBar = (props)=>{
             <div id="side-bar-links">
                 <h4 onClick={props.onHomeClick}>Home</h4>
                 <h4 onClick={props.onAccountsClick}>Bank Accounts</h4>
-                <h4 onClick={props.onHouseHoldAccountClick}>Joint</h4>
+                <h4 onClick={props.onJointAccountClick}>Joint</h4>
             </div>
         </div>
     )

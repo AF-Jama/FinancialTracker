@@ -10,6 +10,7 @@
     /* position: relative; */
     background-color: #fff;
     /* border: 2px solid green; */
+    position: relative;
 }
 
 #accounts-overview-section{
@@ -64,7 +65,7 @@ tr>td{
 }
 
 tr>th{
-    padding: 0 0.3rem;
+    padding: 0;
 }
 
 td{

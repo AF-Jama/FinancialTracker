@@ -38,6 +38,7 @@
     justify-content: space-between;
     overflow-x: hidden;
     padding: 0 1rem;
+    cursor: pointer;
 }
 
 #side-bar-links>h4{
@@ -45,6 +46,7 @@
 }
 
 #side-bar-links>h4:hover{
-    color: rgb(100, 99, 99);
+    color: #90ee90;
+    background-color: #90ee90;
     transition: 1s;
 }

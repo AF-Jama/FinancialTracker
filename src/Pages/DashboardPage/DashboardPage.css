@@ -108,20 +108,20 @@
 }   
 
 #view-account-btn::before{
-    content: url('../../assets/eye.png');
+    content: url('../../assets/eye.svg');
     margin: 0 1rem 0 0;
     vertical-align: middle;
     text-align: center;
 }
 
 #create-account-btn::before{
-    content: url('../../assets/create-account.svg');
+    content: url('../../assets/pagination-right.svg');
     vertical-align: middle;
     margin: 0 1rem 0 0;
 }
 
 .actions{
-    color: #0a8a37;
+    /* color: #0a8a37; */
 }
 
 #dashboard-inner-container>#home-dashboard-container{
@@ -181,7 +181,7 @@
     }
 
     #side-bar-links>h4:hover{
-        background-color: rgb(230, 229, 229);
+        background-color:#e8f5e8;
         transition: 1s;
         color: rgb(75, 185, 75);
     }

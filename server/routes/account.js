@@ -35,6 +35,36 @@ router.get("/getAccountDetails",async (req,res)=>{
 
 router.get('/getAccounts',getAccounts);
 
+router.post('/createAccount',async (req,res)=>{
+    const { accountName,accountType,accountLimit } = req.body; // destructures req body object
+    const { user_id,username,email } = req.token;
+
+    console.log(req.token);
+
+    try {
+        await prisma.account.create({
+            data:{
+                accountName:accountName,
+                accountType:accountType,
+                balance:0,
+                accountLimit:accountLimit,
+                userId:user_id
+
+            }
+        })
+
+        return res.json({
+            message:"Succesfully created new account",
+            statusCode:200
+        })
+    } catch (error) {
+        return res.json({
+            message:"Cannot create new account",
+            statusCode:401
+        })
+    }
+})
+
 
 
 

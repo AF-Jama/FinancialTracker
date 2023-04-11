@@ -35,7 +35,7 @@ const DashBoardPage = ()=>{
         setDashboardPageState(2);
     }
 
-    const onHouseHoldAccountDashboard = (event)=>{
+    const onJointAccountDashboard = (event)=>{
         event.preventDefault();
         
         setDashboardPageState(3);
@@ -78,8 +78,8 @@ const DashBoardPage = ()=>{
     
                 <main>
                     <div id="dashboard-inner-container">
-                        <SideBar onHomeClick={onHomeDashboard} onAccountsClick={onBankAccountsDashboard} onHouseHoldAccountClick={onHouseHoldAccountDashboard}/>
-                        {(dashboardPageState===1) && <Home dashboardData = {data}/> }
+                        <SideBar onHomeClick={onHomeDashboard} onAccountsClick={onBankAccountsDashboard} onJointAccountClick={onJointAccountDashboard}/>
+                        {(dashboardPageState===1) && <Home dashboardData = {data} onHomeClick={onHomeDashboard} onAccountsClick={onBankAccountsDashboard} onJointAccountClick={onJointAccountDashboard}/> }
                         {(dashboardPageState===2) && <Accounts accountData={data}/>} 
                         {/* <CreateAccount/> */}
                         {(dashboardPageState===3) && <SingleAccount/>}

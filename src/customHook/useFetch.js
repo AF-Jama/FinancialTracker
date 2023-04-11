@@ -6,7 +6,10 @@ const useFetch = (URL)=>{
     const [data,setData] = useState(null); // sets data state 
     const [loading,setLoading] = useState(true); // sets loading state 
     const [error,setError] = useState(false); // sets error state
+    const [refetchIndex, setRefetchIndex] = useState(0); // sets refetch state 
     const { accessToken} = useAuth();
+
+    const refetch = ()=> setRefetchIndex((prevFetchIndex)=>prevFetchIndex+1); // method increments fetch state
     
     useEffect(()=>{
         const fetchData = async ()=>{
@@ -31,9 +34,9 @@ const useFetch = (URL)=>{
         }
 
         fetchData();
-    },[URL,accessToken])  // side effect which runs on mount and dependency array change
+    },[URL,accessToken,refetchIndex])  // side effect which runs on mount and dependency array change
 
-    return {data,loading,error} // return state object
+    return {data,loading,error,refetch} // return state object
 }
 
 

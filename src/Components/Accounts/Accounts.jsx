@@ -2,12 +2,14 @@ import React,{useState,useEffect} from "react";
 import useFetch from "../../customHook/useFetch";
 import paginationRight from '../../assets/pagination-right.svg';
 import paginationLeft from '../../assets/pagination-left.svg';
+import CreateAccount from "../CreateAccount";
 import './Accounts.css';
 
 const SERVER_BASE_URL = process.env.REACT_APP_SERVER_BASE;
 
 const Accounts = (props)=>{
     const { data,loading,error } = useFetch(`${SERVER_BASE_URL}/`);
+    const [createAccountState,setCreateAccountState] = useState(false);
 
 
 
@@ -18,7 +20,7 @@ const Accounts = (props)=>{
                 <h2>Your Bank Accounts</h2>
 
                 <div id="create-bank-account-container">
-                    <button id="create-bank-account-btn">Create Bank Account</button>
+                    <button id="create-bank-account-btn" onClick={()=>setCreateAccountState(true)}>Create Bank Account</button>
                 </div>
             </div>
 
@@ -70,6 +72,7 @@ const Accounts = (props)=>{
             </div>
             {/* <img className="pagination-left" src={paginationLeft} alt="" />
             <img className="pagination-right" src={paginationRight} alt="" /> */}
+            {createAccountState && <CreateAccount onExitButton={()=>setCreateAccountState(false)}/> }
         </div>  
         
     )

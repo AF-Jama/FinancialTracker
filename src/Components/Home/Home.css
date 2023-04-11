@@ -8,8 +8,8 @@
 }
 
 #home-dashboard-container{
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
+    /* display: grid;
+    grid-template-columns: repeat(3,1fr); */
     gap: 10px;
     /* background-color: green; */
 }
@@ -32,4 +32,8 @@
     font-size: 1.3rem;
     margin: 0.5rem;
     font-family: 'Roboto', sans-serif;
+}
+
+#home-action-btn-container>.actions{
+    color: green;
 }
