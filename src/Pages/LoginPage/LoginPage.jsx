@@ -16,7 +16,7 @@ const LoginPage = ()=>{
                 <div className="login-column">
                     <img src="https://cdn-icons-png.flaticon.com/512/1907/1907675.png" alt="" height="80px" width="80px" />
                     <LoginForm/>
-                    <a href="/create">Don't have account? Create here</a>
+                    <a href="/create"><p style={{fontWeight:"500"}}>Don't have account? Create here</p></a>
                 </div>
 
                 <div className="login-column">

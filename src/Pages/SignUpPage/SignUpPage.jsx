@@ -26,8 +26,10 @@ const SignUpPage = ()=>{
                 <div className="column" id="sign-up-form-container">
                     {/* <h2>Welcome</h2> */}
                     <img src={next} alt="" style={{height:"80px",width:"80px",margin:"0.9rem auto"}} />
-                    <p style={{fontSize:"18px"}}>Create Account on Financial Tracker to start your money management</p>
+                    <p style={{fontSize:"18px",fontFamily:"sans-serif"}}>Create Account on Financial Tracker to start your money management</p>
                     <SignUpForm/>
+
+                    <a href="/login"><p style={{fontWeight:"500"}}>Already have an account? Login Here</p></a>
 
                     <div id="oauth-providers-btns">
                         <div href="#" id="google-provider" className="auth-provider">Google</div>

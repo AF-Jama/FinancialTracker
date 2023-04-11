@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Work+Sans:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -7,4 +10,26 @@
 #home-dashboard-container{
     display: grid;
     grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+    /* background-color: green; */
+}
+
+.dashboard-card>h5{
+    font-family: 'Inter', sans-serif;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.dashboard-card>p{
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.dashboard-card:nth-child(3){
+    padding: 0 2rem;
+}
+
+#home-action-container>h4{
+    font-size: 1.3rem;
+    margin: 0.5rem;
+    font-family: 'Roboto', sans-serif;
 }

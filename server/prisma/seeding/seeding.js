@@ -36,28 +36,28 @@ let accounts = [
         accountType:'Business',
         accountLimit:250000,
         accountId:uuidv4(), // accountId universal unique id
-        userId:"21a97d20-aa41-47f5-b1a5-90717308462b"
+        userId:"3d91e03d-8229-489a-9004-1d03efb99840"
     },
     {
         accountType:'Business',
         accountLimit:250000,
         accountId:uuidv4(), // accountId universal unique id
         balance:1100.40,
-        userId:"4dfe120a-9b96-47da-a33d-e507f9d3bcbd"
+        userId:"7b2307e1-967e-44d8-abf9-fde5f7efc721"
     },
     {
         accountType:'Corporate',
         accountLimit:2000000,
         accountId:uuidv4(), // accountId universal unique id
         balance:946.12,
-        userId:"8aaf365d-e957-4a1b-9521-e5bdd07fd28c"
+        userId:"8864b838-d2d7-4331-87cc-c3cf78974ad7"
     },
     {
         accountType:'Corporate',
         accountLimit:2000000,
         accountId:uuidv4(), // accountId universal unique id
         balance:234.72,
-        userId:"fe04a16f-e945-4e5b-90a7-f0d9e60e3c3a"
+        userId:"bc60f1bb-2aad-4337-b19c-fd328b2c7816"
     }
 ]
 
@@ -68,7 +68,7 @@ let transaction = [
         transactionAmount:24.37,
         description:"Withdrawing funds for shopping",
         accountTo:null,
-        accountId:"0bb092b4-3a6d-4f53-8318-3830abaf18c3"
+        accountId:"dd1f0c63-1419-4f61-9818-352cc9ff97dd"
 
     },
     {
@@ -77,7 +77,7 @@ let transaction = [
         transactionAmount:24.37,
         description:"Withdrawing funds for company lunch",
         accountTo:null,
-        accountId:"3899ad54-3e21-43c1-8542-85ee8509adc1"
+        accountId:"670692e9-49c0-4aa8-ae91-7035826d15df"
     },
     {
         transactionId:uuidv4(),
@@ -85,15 +85,15 @@ let transaction = [
         transactionAmount:276.47,
         description:"Depositing paycheck",
         accountTo:null,
-        accountId:"334201f1-d233-4e92-a6c9-461014f01a00"
+        accountId:"601eefb4-4c14-4a2c-b9d8-d9e6c2f82364"
     },
     {
         transactionId:uuidv4(),
         transactionType:"Transfer",
         transactionAmount:44.56,
         description:"Transfer",
-        accountTo:"334201f1-d233-4e92-a6c9-461014f01a00",
-        accountId:"0bb092b4-3a6d-4f53-8318-3830abaf18c3"
+        accountTo:"45d836ca-c422-4c9d-b94b-28f189604bfe",
+        accountId:"dd1f0c63-1419-4f61-9818-352cc9ff97dd"
     }
 ]
 
@@ -150,6 +150,19 @@ const transactionsSeed = async ()=>{
     .catch(error=>console.log(error))
 }
 
+const oneAccountSeed = async ()=>{
+    await prisma.account.create({
+        data:{
+            accountType:'Corporate',
+            accountLimit:2000000,
+            accountId:uuidv4(), // accountId universal unique id
+            balance:1000000,
+            userId:"8864b838-d2d7-4331-87cc-c3cf78974ad7"
+        }
+    })
+}
+
 // usersSeed();
 // accountsSeed();
-transactionsSeed();
+// transactionsSeed();
+oneAccountSeed();

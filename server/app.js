@@ -1,17 +1,30 @@
 const express = require('express');
+const { PrismaClient } = require('@prisma/client');
+const { createClient } = require('redis');
 const fs = require('fs');
-const router = require('./routes/auth.js');
+const cors = require('cors');
+const { jwtMiddleware } = require('./middleware/jwtMiddleware');
+const { authRouter } = require('./routes/auth.js');
 const { userRouter } = require('./routes/users.js');
+const { accountRouter } = require('./routes/account.js');
 require('dotenv').config();
+
+const prisma = new PrismaClient();
+// const client = new createClient(); // creating redis client
+
+// client.on()
+
 const app = express();
 
-app.use(function(req, res, next) {
-    res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Origin', "http://localhost:3000"); // FLAG - MUST CHANGE ORIGIN TO FINAL ORIGIN WHEN HOSTED
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
-    next();
-  });
+// app.use(function(req, res, next) {
+//     res.header('Access-Control-Allow-Credentials', true);
+//     res.header('Access-Control-Allow-Origin', "http://localhost:3000"); // FLAG - MUST CHANGE ORIGIN TO FINAL ORIGIN WHEN HOSTED
+//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+//     res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+//     next();
+//   });
+
+app.use(cors());
 
 app.use(express.json())
 
@@ -34,10 +47,15 @@ app.get('/private',(req,res)=>{
     })
 })
 
+// app.get('/getuser', async (req,res)=>{
+//     let res = await prisma
+// })
+
 
 // protected routes
-app.use("/auth",router);
+app.use("/auth",authRouter);
 app.use("/users",userRouter);
+app.use('/account',jwtMiddleware,accountRouter); // protected routes
 
 
 

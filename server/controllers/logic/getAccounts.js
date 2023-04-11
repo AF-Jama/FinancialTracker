@@ -4,18 +4,19 @@ const prisma = new PrismaClient();
 
 const getAccounts = async (req,res)=>{
     // get accounts logic
-    const { id } = req.token; // returns userId from user generated jwt token (jsonwebtoken) 
+    const { user_id,username,email } = req.token; // destrucuring req token object 
+    // console.log(id);
     try{
         let accounts = await prisma.account.findMany({
             where:{
-                userId:id
+                userId:user_id
             }
         })
 
         return res.json({
             statusCode:200,
             message:"Succesful",
-            results:accounts
+            accounts
         })
         
     }catch(error){
@@ -28,4 +29,6 @@ const getAccounts = async (req,res)=>{
 
 
 
-export default getAccounts;
+module.exports = {
+    getAccounts
+};

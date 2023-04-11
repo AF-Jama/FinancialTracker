@@ -1,21 +1,19 @@
 import React,{useState,useEffect} from "react";
-import { useAuth0 } from '@auth0/auth0-react';
+import useAuth from "./useAuth";
 
 
 const useFetch = (URL)=>{
     const [data,setData] = useState(null); // sets data state 
     const [loading,setLoading] = useState(true); // sets loading state 
     const [error,setError] = useState(false); // sets error state
-    const { getAccessTokenSilently } = useAuth0();
-
-
+    const { accessToken} = useAuth();
+    
     useEffect(()=>{
         const fetchData = async ()=>{
             try{
-                let accessToken = await getAccessTokenSilently(); // returns access token promise value
                 let res = await fetch(URL,{
                     headers:{
-                        "Authorization": `Bearer ${accessToken}`
+                        "Authorization":`Bearer ${accessToken}`
                     }
                 });
                 if(!res.ok) throw Error;
@@ -28,12 +26,12 @@ const useFetch = (URL)=>{
             }catch(error){
                 setData(null);
                 setLoading(true);
-                setError(error);
+                setError(true);
             }
         }
 
         fetchData();
-    },[URL])  // side effect which runs on mount and dependency array change
+    },[URL,accessToken])  // side effect which runs on mount and dependency array change
 
     return {data,loading,error} // return state object
 }

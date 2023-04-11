@@ -16,7 +16,11 @@ router.post("/signup",CreateAccount);
 
 router.post("/login",Login);
 
+// router.post('/genNewAccessToken',);
 
 
 
-module.exports = router;
+
+module.exports = {
+    authRouter:router
+};

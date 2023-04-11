@@ -1,18 +1,45 @@
 import React,{useState,useEffect} from "react";
-import { useAuth0 } from "@auth0/auth0-react";
 import { Navigate } from "react-router";
 import useSize from "../../customHook/useSize";
 import Header from "../../Components/Header";
 import SideBar from "../../Components/SideBar";
 import Home from "../../Components/Home";
+import Accounts from "../../Components/Accounts";
 import CreateAccount from "../../Components/CreateAccount";
-import './DashboardPage.css';
+import SingleAccount from "../../Components/SingleAccount";
 import useFetch from "../../customHook/useFetch";
+import useAuth from "../../customHook/useAuth";
+import './DashboardPage.css';
+
+const SERVER_BASE_URL = process.env.REACT_APP_SERVER_BASE; // returns server base URL
 
 const DashBoardPage = ()=>{
-    const { data,loading,error } = useFetch("http://localhost:5000/authorized");
+    const { isAuthenticated,isLoading,accessToken,refreshToken,user,Logout } = useAuth();
+    const { data,loading,error } = useFetch(`${SERVER_BASE_URL}/account/getAccountDetails`);
+    const [dashboardPageState,setDashboardPageState] = useState(1); // set dashboard page state
 
-    // console.log(data);
+    console.log(data);
+
+    
+    const onHomeDashboard = (event)=>{
+        event.preventDefault();
+
+        setDashboardPageState(1);
+    }
+
+    const onBankAccountsDashboard = (event)=>{
+        event.preventDefault();
+
+        console.log("Account Dashboard");
+        
+        setDashboardPageState(2);
+    }
+
+    const onHouseHoldAccountDashboard = (event)=>{
+        event.preventDefault();
+        
+        setDashboardPageState(3);
+    }
 
 
     // useEffect(()=>{
@@ -27,8 +54,9 @@ const DashBoardPage = ()=>{
 
     //     fetchAccessToken();
     // },[]); // side effect which runs on initial render (on mount) and on dependency array change
+    
 
-    if(1){
+    if(isLoading){
         return(
             <div id="spinner-container">
                 <div id="spinner-grow" class="spinner-grow" role="status">
@@ -38,7 +66,11 @@ const DashBoardPage = ()=>{
         )
     }
 
-    if(1){
+    if(!isAuthenticated){
+        return <Navigate to='/'/>
+    }
+
+    if(isAuthenticated && !isLoading){
         return (
             <div id="dashboard-page-container">
                 <Header/>
@@ -46,9 +78,11 @@ const DashBoardPage = ()=>{
     
                 <main>
                     <div id="dashboard-inner-container">
-                        <SideBar/>
-                        <Home/>
-                        <CreateAccount/>
+                        <SideBar onHomeClick={onHomeDashboard} onAccountsClick={onBankAccountsDashboard} onHouseHoldAccountClick={onHouseHoldAccountDashboard}/>
+                        {(dashboardPageState===1) && <Home dashboardData = {data}/> }
+                        {(dashboardPageState===2) && <Accounts accountData={data}/>} 
+                        {/* <CreateAccount/> */}
+                        {(dashboardPageState===3) && <SingleAccount/>}
                     </div>
                 </main>
             </div>

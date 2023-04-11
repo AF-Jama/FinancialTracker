@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#single-account-container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: 0.3fr 1fr 0.3fr;
+    gap: 10px;
+}
+
+.account-stat-card{
+    background-color: #fff;
+    padding: 1rem;
+}
+
+#account-balance{
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+#account-spending{
+    grid-column-start: 2;
+    grid-column-end: 3;    
+}
+
+#account-deposit{
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
+#account-details-section{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    background-color: red;   
+}
+
+#transactions-container{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    background-color: #fff;
+}
+
+@media screen and (min-width:850px) {
+    #single-account-container{
+        grid-row-start: 2;
+        grid-row-end: 5;
+    }
+}

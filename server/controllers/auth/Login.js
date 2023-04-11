@@ -9,7 +9,9 @@ const prisma = new PrismaClient();
 
 
 const Login = async (req,res,next)=>{
+    console.log("SUCCESFUL");
     const { email,password } = req.body; // returns request payload
+    console.log(email,password);
     const jwtSecret = process.env.TOKEN_SECRET; // returns jwt secret to sign access and refresh token
     try{
 
@@ -18,6 +20,8 @@ const Login = async (req,res,next)=>{
                 email:email
             }
         }) // returns unique user
+
+        console.log(user);
 
         const passwordHash = user.password; // return user password hash
 
@@ -40,11 +44,16 @@ const Login = async (req,res,next)=>{
             type:"refresh_token"
         }
 
-        const accessToken = jwt.sign(refreshTokenPayload,jwtSecret,{
+        const userPayload = {
+            username:user.username,
+            email:user.email
+        }
+
+        const accessToken = jwt.sign(payload,jwtSecret,{
             expiresIn:"24hrs"
         }); // creation of access token which expires in 24hrs
 
-        const refreshToken = jwt.sign(payload,jwtSecret,{
+        const refreshToken = jwt.sign(refreshTokenPayload,jwtSecret,{
             expiresIn:"7days"
         }); // creation of refresh token which expires in 7 days
 
@@ -52,7 +61,8 @@ const Login = async (req,res,next)=>{
             message:"Succesful Login",
             statusCode:201,
             access_token:accessToken, // access token
-            refresh_token:refreshToken // refresh token
+            refresh_token:refreshToken, // refresh token
+            user:userPayload
         })
 
     }catch(error){

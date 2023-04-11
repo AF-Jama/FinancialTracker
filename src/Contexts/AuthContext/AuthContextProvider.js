@@ -24,16 +24,21 @@ const initialState = {
 const AuthContextProvider = ({children})=>{
     // const [user,dispatch] = useReducer(reducer,initialState);  
     const [user,setUser] = useState(null); 
-    const [accesstoken,setAccessToken] = useState(null); // initial state of login context provider is null, a logged in user represents a existing jwt in a user request cookie.
+    const [accessToken,setAccessToken] = useState(null); // initial state of login context provider is null, a logged in user represents a existing jwt in a user request cookie.
     const [refreshToken,setRefreshToken] = useState(null); // refresh token state, initial state null  
+    const [isLoading,setIsLoading] = useState(true); // set isLoading state
     const [isAuthenticated,setIsAuthenticated] = useState(false); // authentication state which is bool value
 
 
     const Logout = ()=>{
+        Cookies.remove("access_token"); // removes access token
+        Cookies.remove("refresh_token"); // removes refresh token
+        Cookies.remove("user"); // removes user
         setUser(null);
         setAccessToken(null);
         setRefreshToken(null);
-        setIsAuthenticated(null);
+        setIsLoading(false);
+        setIsAuthenticated(false);
     }
 
 
@@ -47,11 +52,12 @@ const AuthContextProvider = ({children})=>{
             setAccessToken(cookieAccessToken);
             setRefreshToken(cookieRefreshToken);
             setUser(cookieUser);
+            setIsLoading(false);
             setIsAuthenticated(true);
         }
 
         else{
-            Logout(); // logout routine
+            Logout(); // logout routinE
         }
 
     },[Cookies.get("access_token"),Cookies.get("refresh_token"),Cookies.get("user")]); // runs on mount and on dependecy array change
@@ -59,7 +65,7 @@ const AuthContextProvider = ({children})=>{
 
 
     return (
-        <authContext.Provider value={{isAuthenticated,accesstoken,refreshToken,Logout,user}}>
+        <authContext.Provider value={{isAuthenticated,isLoading,accessToken,refreshToken,Logout,user}}>
             {children}
         </authContext.Provider>
     )

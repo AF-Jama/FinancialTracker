@@ -40,7 +40,8 @@ model User{
 
 model Account{
   accountId String @id @default(uuid())
-  accountLimit BigInt
+  accountName String @db.VarChar(30) @default("My Account")
+  accountLimit Int
   accountType AccountType
   balance Float @default(0)
   user User @relation(fields: [userId],references: [id])

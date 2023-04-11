@@ -8,11 +8,9 @@ import CreateAccount from './Components/CreateAccount';
 import SignUpPage from './Pages/SignUpPage';
 import LoginPage from './Pages/LoginPage';
 import { Routes,Route } from 'react-router';
-import { useAuth0 } from '@auth0/auth0-react';
 import './App.css';
 
 function App() {
-  const { loginWithRedirect } = useAuth0();
   console.log(process.env);
 
   return (

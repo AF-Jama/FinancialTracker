@@ -17,6 +17,7 @@
 
 #welcome-container>h3::before{
     content: url('../../assets/check.png');
+    vertical-align: middle;
     margin-right: 1rem;
 }
 
@@ -26,7 +27,7 @@
 }
 
 #side-bar-container{
-    outline: 2px solid red;
+    /* outline: 2px solid red; */
     box-shadow: 0 0 1px rgba(255, 255, 255, 0);
     border-radius: 5px;
 }

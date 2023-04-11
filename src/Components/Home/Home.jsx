@@ -4,7 +4,7 @@ import CreateAccount from "../CreateAccount";
 import './Home.css';
 
 
-const Home = ()=>{
+const Home = (props)=>{
     const [createAccountVisibility,setCreateAccountVisibility] = useState(false); // set create account visibility state
 
     const onExitButton = (event)=>{
@@ -13,13 +13,15 @@ const Home = ()=>{
         setCreateAccountVisibility(false);
     }
 
+    console.log("SUCCCESFUL");
+
 
     return (
         <div id="home-dashboard-container">
             <div className="dashboard-card" id="number-bank-accounts-card">
                 <h5>Accounts</h5>
 
-                <p>NaN</p>
+                <p>{(props.dashboardData?.statusCode === 200)?props.dashboardData?.accountDetails[0].accounts.length:"Loading"}</p>
             </div>
 
             <div className="dashboard-card" id="number-transactions-card">
@@ -29,7 +31,7 @@ const Home = ()=>{
             </div>
 
             <div className="dashboard-card" id="total-spent-card">
-                <h5>Total Spent</h5>
+                <h5>Spent</h5>
 
                 <p>NaN</p>
             </div>

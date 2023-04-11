@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#accounts-container{
+    /* position: relative; */
+    background-color: #fff;
+    /* border: 2px solid green; */
+}
+
+#accounts-overview-section{
+    /* margin: 0.5rem 0;
+    padding:0 0.5rem; */
+}
+
+#accounts-overview-section>h2{
+    font-weight: 700;
+    font-size: 1.1rem;
+    font-family: 'Sora', sans-serif;
+}
+
+#create-bank-account-btn{
+    padding: 0.5rem 1.5rem;
+    background-color: #3cb371;
+    border-radius: 12px;
+    color: #fff;
+    font-family: 'Sora', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin: 0.5rem 0;
+}
+
+#create-bank-account-btn::before{
+    content: url('../../assets/plus.svg');
+    margin: 0 0.5rem 0 0;
+    vertical-align: middle;
+}
+
+#accounts-table-container{
+    margin: 1.5rem 0 0 0;
+}
+
+.styled-table {
+    border-collapse: collapse;
+    width: 95%;
+    margin: 25px auto;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+    /* background-color: #3cb371;   */
+    color: grey;
+    text-align: left;
+}
+
+tr>td{
+    text-align: center;
+}
+
+tr>th{
+    padding: 0 0.3rem;
+}
+
+td{
+    padding: 0 0.2rem;
+}
+
+.account-action-btn{
+    padding: 0.5rem 1rem;
+    color: white;
+    background-color: #3cb371;
+    border-radius: 8px;
+    margin: 0.2rem 0;
+}
+
+.styled-table{
+    text-align: center;
+}
+
+.styled-table th,
+.styled-table td {
+    /* padding: 12px 15px; */
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.delete-btn-container{
+    display: none;
+}
+
+/* .pagination-right{
+    position: absolute;
+    bottom: 0;
+    right: 5px;
+}
+
+.pagination-left{
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+} */
+
+
+@media screen and (min-width:400px){
+    #accounts-overview-section{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 0.5rem;
+    }
+}
+
+@media screen and (min-width:700px){
+    tr>td{
+        text-align: left;
+    }
+
+    
+    .delete-btn-container{
+        display: block;
+    }
+
+    .delete-btn-container>button{
+        background-color: transparent;
+        color: red;
+        border: 1px solid red;
+        font-size: 0.9rem;
+    }
+
+    .account-actions{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .view-btn-container{
+        margin: 0 1rem 0 0;
+    }
+    
+    /* .view-btn-container,.delete-btn-container{
+        width: 50%;
+    } */
+}
