@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react";
+import React,{useState,useEffect, useReducer} from "react";
 import { Navigate } from "react-router";
 import useSize from "../../customHook/useSize";
 import Header from "../../Components/Header";
@@ -17,6 +17,15 @@ const DashBoardPage = ()=>{
     const { isAuthenticated,isLoading,accessToken,refreshToken,user,Logout } = useAuth();
     const { data,loading,error } = useFetch(`${SERVER_BASE_URL}/account/getAccountDetails`);
     const [dashboardPageState,setDashboardPageState] = useState(1); // set dashboard page state
+    
+    const accountDataReducer = (state,action)=>{
+        console.log(action.payload);
+        return {...action.payload};
+    }
+    
+    const [ accountDataState,dispatch ] = useReducer(accountDataReducer,{
+        accountData:null
+    });
 
     console.log(data);
 
@@ -39,6 +48,13 @@ const DashBoardPage = ()=>{
         event.preventDefault();
         
         setDashboardPageState(3);
+    }
+
+    const onSingleAccountDashboardClick = (accountData)=>{
+
+        dispatch({payload:accountData});
+        // console.log(accountData);
+        setDashboardPageState(4);
     }
 
 
@@ -80,9 +96,9 @@ const DashBoardPage = ()=>{
                     <div id="dashboard-inner-container">
                         <SideBar onHomeClick={onHomeDashboard} onAccountsClick={onBankAccountsDashboard} onJointAccountClick={onJointAccountDashboard}/>
                         {(dashboardPageState===1) && <Home dashboardData = {data} onHomeClick={onHomeDashboard} onAccountsClick={onBankAccountsDashboard} onJointAccountClick={onJointAccountDashboard}/> }
-                        {(dashboardPageState===2) && <Accounts accountData={data}/>} 
+                        {(dashboardPageState===2) && <Accounts accountData={data} onSingleAccountClick={onSingleAccountDashboardClick}/>} 
                         {/* <CreateAccount/> */}
-                        {(dashboardPageState===3) && <SingleAccount/>}
+                        {(dashboardPageState===4) && <SingleAccount accountData={accountDataState}/>}
                     </div>
                 </main>
             </div>

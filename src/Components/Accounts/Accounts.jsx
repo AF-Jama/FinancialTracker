@@ -8,7 +8,7 @@ import './Accounts.css';
 const SERVER_BASE_URL = process.env.REACT_APP_SERVER_BASE;
 
 const Accounts = (props)=>{
-    const { data,loading,error } = useFetch(`${SERVER_BASE_URL}/`);
+    // const { data,loading,error } = useFetch(`${SERVER_BASE_URL}/`);
     const [createAccountState,setCreateAccountState] = useState(false);
 
 
@@ -49,13 +49,13 @@ const Accounts = (props)=>{
 
                     <tbody>
                         {props.accountData?.accountDetails[0].accounts.map(element=>(
-                            <tr>
+                            <tr key={element}>
                                 <td className="account-name">{element.accountName}</td>
                                 <td className="account-type">{element.accountType}</td>
                                 <td className="transaction-count">{element._count.transaction}</td>
                                 <td className="account-actions">
                                     <div className="view-btn-container">
-                                        <button className="account-action-btn">View Account</button>
+                                        <button className="account-action-btn" onClick={()=>props.onSingleAccountClick(element)}>View Account</button>
                                     </div>
 
                                     <div className="delete-btn-container">

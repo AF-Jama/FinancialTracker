@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Work+Sans:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -7,13 +10,44 @@
 #single-account-container{
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    grid-template-rows: 0.3fr 1fr 0.3fr;
+    grid-template-rows: 0.3fr auto 1fr;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
     gap: 10px;
 }
 
 .account-stat-card{
     background-color: #fff;
-    padding: 1rem;
+    padding: 1.5rem 0.5rem;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+}
+
+.account-stat-card>h4{
+    color: black;
+    margin: 0 0 1rem 0;
+    font-family: 'Inter', sans-serif;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.account-stat-card>p{
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.account-stat-card>.c-balance,.deposit{
+    color: #26a526;
+}
+
+.account-stat-card>.spending{
+    color: red;
+}
+
+.spending{
+    color: red;
 }
 
 #account-balance{
@@ -36,7 +70,9 @@
     grid-column-end: 4;
     grid-row-start: 2;
     grid-row-end: 3;
-    background-color: red;   
+    /* background-color: red;   */
+    background-color: #fff;
+    padding: 1rem; 
 }
 
 #transactions-container{
@@ -45,9 +81,110 @@
     background-color: #fff;
 }
 
+#account-details-section>h1{
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: left;
+}
+
+.account-details>span{
+    font-weight: 600;   
+}
+
+.account-details{
+    margin: 1rem 0;
+    text-align: left;
+}
+
+#account-details-btn-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.account-details-btns{
+    /* border: 2px solid red; */
+    margin: 0 0.5rem 0 0;
+}
+
+.account-details-btns>button{
+    color: white;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+}
+
+#edit-btn-container>button{
+    background-color: red;
+}
+
+#delete-btn-container>button{
+    background-color: #26a526;    
+}
+
+#transactions-container{
+    position: relative;
+    padding: 1rem;
+}
+
+.transaction-table{
+    width: 98%;
+    max-width: 800px;
+    max-height: 250px;
+    padding: 0 1rem;
+    overflow: scroll;
+}
+
+/* .styled-table {
+    border-collapse: collapse;
+    width: 95%;
+    margin: 25px auto;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+} */
+
+.transaction-table thead tr {
+    /* background-color: #3cb371;   */
+    color: grey;
+}
+
+tr>td{
+    text-align: center;
+    font-family: 'Work Sans', sans-serif;
+}
+
+tr>th{
+    padding: 0;
+    padding: 0 0.2rem;
+}
+
+td{
+    padding: 0 0.2rem;
+}
+
+#transaction-btn-container{
+    display: flex;
+    justify-content: flex-start;
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+}
+
+#transaction-btn-container>button{
+    background-color: #26a526;
+    color: #fff;
+    font-weight: 700;
+    padding: 0.5rem 1.5rem;
+    margin: 0 0 1rem 0.3rem;
+    border-radius: 8px;
+}
+
+
 @media screen and (min-width:850px) {
-    #single-account-container{
-        grid-row-start: 2;
-        grid-row-end: 5;
+    #single-account-container{  
+        grid-column-start: 2;
+        grid-column-end: 4;
+        grid-row-start: 1;
+        grid-row-end: 5;    
     }
 }
