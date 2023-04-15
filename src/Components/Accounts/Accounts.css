@@ -14,8 +14,8 @@
 }
 
 #accounts-overview-section{
-    /* margin: 0.5rem 0;
-    padding:0 0.5rem; */
+    margin: 0.5rem 0;
+    padding:0 0.5rem;
 }
 
 #accounts-overview-section>h2{
@@ -45,11 +45,15 @@
     margin: 1.5rem 0 0 0;
 }
 
+/* .darker-background{
+    background-image: linear-gradient(rgb(0 0 0/40%) 0 0);
+} */
+
 .styled-table {
     border-collapse: collapse;
     width: 95%;
+    /* border: 2px solid red; */
     margin: 25px auto;
-    font-size: 0.9em;
     font-family: sans-serif;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
@@ -57,7 +61,7 @@
 .styled-table thead tr {
     /* background-color: #3cb371;   */
     color: grey;
-    text-align: left;
+    /* text-align: left; */
 }
 
 tr>td{
@@ -69,7 +73,7 @@ tr>th{
 }
 
 td{
-    padding: 0 0.2rem;
+    padding: 0 0.1rem;
 }
 
 .account-action-btn{

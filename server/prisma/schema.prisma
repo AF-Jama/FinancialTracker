@@ -56,8 +56,8 @@ model Transactions{
   transactionAmount Float
   description String? // transaction optional string
   transactionTimeStamp DateTime @default(now())
-  account Account @relation("transaction_1",fields:[accountId],references: [accountId]) // maps relationship between Transaction accountId and Account accountId 
-  account2 Account? @relation("transaction_2",fields: [accountTo],references: [accountId]) // maps relationship betweeen Transaction AccountTo and Account AccountId
+  account Account @relation("transaction_1",fields:[accountId],references: [accountId], onDelete: Cascade ) // maps relationship between Transaction accountId and Account accountId 
+  account2 Account? @relation("transaction_2",fields: [accountTo],references: [accountId],onDelete: Cascade) // maps relationship betweeen Transaction AccountTo and Account AccountId
   accountTo String? // accountTo uuid (applicable to transfers between accounts), is nullable during deposit and withdrawal transactions
   accountId String
 }

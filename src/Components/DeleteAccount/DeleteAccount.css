@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#delete-account-container{
+    width: 95%;
+    max-width: 600px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+    padding: 3.5rem;
+    background-color: lightgrey;
+    border-radius: 12px;
+}
+
+#delete-account-container>p{
+    position: relative;
+    top: -20px;
+    font-size: 1.2rem;
+    font-weight: 600;   
+}
+
+#burger-btn-container{
+    position: absolute;
+    top: 0;
+    right: 5px;
+}
+
+#btn-container{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+}
+
+.del-account-btn{
+    margin: 0.3rem;
+}
+
+.del-account-btn>button{
+    padding: 0.4rem 1rem;
+    border-radius: 10px;
+}
+
+#delete-btn>button{
+    background-color: red;
+}
+
+#cancel-btn>button{
+    background-color: transparent;
+    color: black;
+}

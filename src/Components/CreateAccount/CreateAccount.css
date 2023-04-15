@@ -22,13 +22,12 @@
     width: 95%;
     margin: 0 auto;
     max-width: var(--createAccountMaxWidth);
-    position: fixed;
+    position: absolute;
     background-color: lightgrey;
     z-index: 100;
-    left: 0; 
-    right: 0; 
-    margin-left: auto; 
-    margin-right: auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     top: 300px; 
     height: 300px;
     border-radius: 10px;
@@ -38,7 +37,9 @@
 }
 
 #create-account-container>h4{
-    color: white;
+    color: black;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
 #account-types{

@@ -1,6 +1,7 @@
 // protected account logic endpoints
 const express = require('express');
 const { getAccounts } = require('../controllers/logic/getAccounts');
+const { AccountDeletion } = require('../controllers/logic/delAccount');
 const { PrismaClient } = require('@prisma/client'); 
 
 const router = express.Router();
@@ -64,6 +65,9 @@ router.post('/createAccount',async (req,res)=>{
         })
     }
 })
+
+
+router.delete('/accountDel',AccountDeletion);
 
 
 

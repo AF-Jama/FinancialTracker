@@ -15,7 +15,7 @@ const SERVER_BASE_URL = process.env.REACT_APP_SERVER_BASE; // returns server bas
 
 const DashBoardPage = ()=>{
     const { isAuthenticated,isLoading,accessToken,refreshToken,user,Logout } = useAuth();
-    const { data,loading,error } = useFetch(`${SERVER_BASE_URL}/account/getAccountDetails`);
+    const { data,loading,error,refetch } = useFetch(`${SERVER_BASE_URL}/account/getAccountDetails`);
     const [dashboardPageState,setDashboardPageState] = useState(1); // set dashboard page state
     
     const accountDataReducer = (state,action)=>{
@@ -96,8 +96,8 @@ const DashBoardPage = ()=>{
                     <div id="dashboard-inner-container">
                         <SideBar onHomeClick={onHomeDashboard} onAccountsClick={onBankAccountsDashboard} onJointAccountClick={onJointAccountDashboard}/>
                         {(dashboardPageState===1) && <Home dashboardData = {data} onHomeClick={onHomeDashboard} onAccountsClick={onBankAccountsDashboard} onJointAccountClick={onJointAccountDashboard}/> }
-                        {(dashboardPageState===2) && <Accounts accountData={data} onSingleAccountClick={onSingleAccountDashboardClick}/>} 
-                        {/* <CreateAccount/> */}
+                        {(dashboardPageState===2) && <Accounts accountData={data} onSingleAccountClick={onSingleAccountDashboardClick} onrefetch = {refetch}/>} 
+
                         {(dashboardPageState===4) && <SingleAccount accountData={accountDataState}/>}
                     </div>
                 </main>

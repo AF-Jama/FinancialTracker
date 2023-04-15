@@ -73,8 +73,8 @@ const CreateAccount = (props)=>{
             console.log(res);
 
             if(res.statusCode===200){
+                props.onrefetch();
                 setCreateStatus(true);
-                refetch()
                 return;
             }
             console.log(accountType);
@@ -86,30 +86,6 @@ const CreateAccount = (props)=>{
             return;
         }
     }
-
-
-
-    useEffect(()=>{
-        // use effect runs to call endpoint to check if account name already exists
-        const fetch =  async ()=>{
-            try{
-                let res = await fetch('');
-
-                if(!res.ok) throw new Error("Error");
-
-                res = await res.json();
-
-                if(!res.exists){
-                    // triggered is account name does not exist under user
-                    setAccountNameExistStatus(false);
-                }else{
-                    throw Error('Account exists')
-                }
-            }catch(error){
-                setAccountNameExistStatus(true);
-            }
-        }
-    },[accountName]) // side effect runs on initial render(on mount) and on dependency array change
 
     useEffect(()=>{
         if(createStatus){

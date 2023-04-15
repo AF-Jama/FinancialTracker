@@ -126,13 +126,13 @@
     padding: 1rem;
 }
 
-.transaction-table{
+/* .transaction-table{
     width: 98%;
     max-width: 800px;
     max-height: 250px;
     padding: 0 1rem;
     overflow: scroll;
-}
+} */
 
 /* .styled-table {
     border-collapse: collapse;
@@ -145,22 +145,22 @@
 
 .transaction-table thead tr {
     /* background-color: #3cb371;   */
-    color: grey;
+    /* color: grey; */
 }
 
-tr>td{
+/* tr>td{
     text-align: center;
     font-family: 'Work Sans', sans-serif;
-}
+} */
 
-tr>th{
+/* tr>th{
     padding: 0;
     padding: 0 0.2rem;
-}
+} */
 
-td{
+/* td{
     padding: 0 0.2rem;
-}
+} */
 
 #transaction-btn-container{
     display: flex;
