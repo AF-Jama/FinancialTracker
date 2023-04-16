@@ -21,6 +21,7 @@ router.get("/getAccountDetails",async (req,res)=>{
             accounts:{
                 include:{
                     transaction:true,
+                    transaction2:true,
                     _count:true
                 }
             }

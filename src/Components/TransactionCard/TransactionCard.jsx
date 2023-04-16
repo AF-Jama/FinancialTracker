@@ -127,6 +127,7 @@ const TransactionCard = (props)=>{
     return (
         <div id="transaction-card-container">
             {errorState && errorState}
+            {succesfulState && succesfulState}
             <h2>Add Transaction</h2>
 
             <div id="form-transaction-container">

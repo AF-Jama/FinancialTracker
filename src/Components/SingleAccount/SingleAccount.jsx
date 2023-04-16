@@ -61,9 +61,9 @@ const SingleAccount = (props)=>{
                     </thead>
 
                     <tbody>
-                        {props.accountData.transaction.map(element=>(
+                        {props.accountData.transaction.concat(props.accountData.transaction2).map(element=>(
                             <tr>
-                                <td id="table-amount" style={(element.transactionType==="Transfer" || element.transactionType==="Withdrawal")?{color:"red"}:{color:"#26a526"}}>${element.transactionAmount}</td>
+                                <td id="table-amount" style={((element.transactionType==="Transfer" && !element.accountTo) || element.transactionType==="Withdrawal")?{color:"red"}:{color:"#26a526"}}>${element.transactionAmount}</td>
                                 <td id="table-transactionType">{element.transactionType}</td>
                                 <td id="table-accountTo-date">{(element.transactionType==="Transfer")?element.accountTo.substring(0,5) + "...":"N/A"}</td>
                                 <td id="table-date">{new Date(element.transactionTimeStamp).toDateString()}</td>
