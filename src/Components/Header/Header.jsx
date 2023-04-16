@@ -20,8 +20,10 @@ const Header = ()=>{
 
                 <NavBar visibility = {visibility}/>
 
-                <div id="burger-btn-container">
-                    {visibility?<FontAwesomeIcon id="btn" icon={faX} onClick={()=>setVisibility(false)} size="2x" color="white"/>:<FontAwesomeIcon id="btn" icon={faBars} onClick={()=>setVisibility(true)} size="2x" color="black"/>}
+                <div id="b-btn-container" className={visibility?"change":"ontainer"} onClick={()=>setVisibility(!visibility)}>
+                    <div className="bar1"></div>
+                    <div className="bar2"></div>
+                    <div className="bar3"></div>
                 </div>
 
                 

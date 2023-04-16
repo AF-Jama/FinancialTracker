@@ -35,6 +35,36 @@ header{
     transition: 1s;
 }
 
+.bar1,.bar2,.bar3{
+    /* height: 2px;
+    width: 25px;
+    background-color: black;
+    margin: 0.5rem; */
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;   
+}
+
+.change{
+    /* background-color: white; */
+    color: white;
+    z-index: 10;
+}
+
+.change .bar1 {
+    transform: translate(0, 11px) rotate(-45deg);
+    background-color: white;
+}
+  
+.change .bar2 {opacity: 0;}
+  
+.change .bar3 {
+    transform: translate(0, -11px) rotate(45deg);
+    background-color: white;
+}
+
 .visible{
     position: fixed;
     top: 0;
@@ -96,5 +126,9 @@ header{
 
     nav>#nav-links{
         background-color: transparent;
+    }
+
+    #b-btn-container{
+        display: none;
     }
 }

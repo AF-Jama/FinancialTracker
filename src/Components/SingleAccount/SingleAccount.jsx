@@ -1,12 +1,15 @@
 import React,{useState,useReducer,useEffect} from "react";
 import TransactionCard from "../TransactionCard";
+import DeleteAccount from "../DeleteAccount";
 import './SingleAccount.css';
 
 
 const SingleAccount = (props)=>{
     const [ transactionCardState,setTransactionCardState ] = useState(false);
+    const [deleteStatus,setDeleteStatus] = useState(false); // set delete status
     // console.log(props.accountData);
     // console.log(JSON.stringify(props.accountData));
+    console.log(props.accountData);
 
 
 
@@ -41,7 +44,7 @@ const SingleAccount = (props)=>{
                         <button>Edit Details</button>
                     </div>
                     <div id="delete-btn-container" className="account-details-btns">
-                        <button>Delete Account</button>
+                        <button onClick={()=>setDeleteStatus(true)}>Delete Account</button>
                     </div>
                 </div>
             </div>
@@ -63,7 +66,7 @@ const SingleAccount = (props)=>{
                                 <td id="table-amount" style={(element.transactionType==="Transfer" || element.transactionType==="Withdrawal")?{color:"red"}:{color:"#26a526"}}>${element.transactionAmount}</td>
                                 <td id="table-transactionType">{element.transactionType}</td>
                                 <td id="table-accountTo-date">{(element.transactionType==="Transfer")?element.accountTo.substring(0,5) + "...":"N/A"}</td>
-                                <td id="table-date">04-04-1988</td>
+                                <td id="table-date">{new Date(element.transactionTimeStamp).toDateString()}</td>
                             </tr>
                         ))}
                     </tbody>
@@ -74,6 +77,7 @@ const SingleAccount = (props)=>{
                 </div>
             </div>
             {transactionCardState && <TransactionCard accountData={props.accountData} onExitButton = {()=>setTransactionCardState(false)} onrefetch = {props.onrefetch}/>}
+            {deleteStatus && <DeleteAccount onExitButton = {()=>setDeleteStatus(false)} accountData={props.accountData} onfetch = {props.onrefetch}/>}
         </div>
     )
 }

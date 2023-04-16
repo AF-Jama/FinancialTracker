@@ -55,7 +55,7 @@ const DeleteAccount = (props)=>{
 
             <div id="btn-container">
                 <div id="cancel-btn" className="del-account-btn">
-                    <button onClick={props.onExitButton}>Cancel</button>
+                    <button id="cancel-btn" onClick={props.onExitButton}>Cancel</button>
                 </div>
                 <div id="delete-btn" className="del-account-btn">
                     <button onClick={onDeleteButton}>Delete</button>

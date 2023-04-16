@@ -6,9 +6,7 @@ const prisma = new PrismaClient();
 
 
 const AccountDeletion = async (req,res)=>{
-    console.log("HIT");
     const { accountId } = req.query; // destructures req query object
-    console.log("SUCCESFUL");
 
     try{
         await prisma.account.delete({

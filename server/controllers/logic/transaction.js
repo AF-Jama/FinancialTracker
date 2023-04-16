@@ -9,7 +9,7 @@ const addTransaction = async (req,res)=>{
     const { user_id,username,email } = req.token; // destrucuring req token object
     const { amount,transactionType,accountTo,accountFrom,newBalance,accountLimit,description} = req.body;
 
-    // console.log(req.body);
+    console.log(req.body);
     
     try{
         if(transactionType === "Deposit"){
@@ -75,23 +75,39 @@ const addTransaction = async (req,res)=>{
         }
 
         if(transactionType === "Transfer"){
+            console.log("TRANSFER HIT");
             return await prisma.$transaction(async (tx)=>{
                 const updatedAccountFrom = await tx.account.update({
                     data:{
-                        balance:newBalance,
+                        balance:{
+                            decrement:parseFloat(amount)
+                        },
                     },
                     where:{
                         accountId:accountFrom
                     }
                 })
         
-                if(updatedAccount.balance<0) throw new Error("Withdrawal balance cannot go below 0");
+                if(updatedAccountFrom.balance<0) throw new Error("Balance cannot be below 0 after transfer");
+
+                const updatedAccountTo = await tx.account.update({
+                    data:{
+                        balance:{
+                            increment:parseFloat(amount)
+                        }
+                    },
+                    where:{
+                        accountId:accountTo
+                    }
+                })
+
+                if(updatedAccountTo.balance>updatedAccountTo.accountLimit) throw new Error("Cannot transfer due to an error on the recievers end");
                 
                 const addedTransaction = await tx.transactions.create({
                     data:{
-                        transactionType:'Withdrawal',
+                        transactionType:'Transfer',
                         transactionAmount:parseFloat(amount),
-                        accountTo:null,
+                        accountTo:accountTo,
                         description:description||null,
                         accountId:accountFrom,                      
                     },
@@ -104,8 +120,8 @@ const addTransaction = async (req,res)=>{
                 })
             })
         }
-        }
     }catch(error){
+        console.log(error);
         return res.json({
             message:"Cannot carry out transaction",
             statusCode:401

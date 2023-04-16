@@ -114,11 +114,11 @@
 }
 
 #edit-btn-container>button{
-    background-color: red;
+    background-color: #26a526;
 }
 
 #delete-btn-container>button{
-    background-color: #26a526;    
+    background-color: red;    
 }
 
 #transactions-container{
@@ -137,6 +137,18 @@
 .transaction-table>tbody{
     max-height: 100px;
     overflow: scroll;
+}
+
+.transaction-table>tbody {
+    display: block;
+    max-height: 300px;
+    overflow-y: scroll;
+}
+  
+.transaction-table> thead, .transaction-table> tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
 }
 
 /* .styled-table {
@@ -170,7 +182,7 @@
 #transaction-btn-container{
     display: flex;
     justify-content: flex-start;
-    position: absolute;
+    /* position: absolute; */
     bottom: -10px;
     left: 0;
 }

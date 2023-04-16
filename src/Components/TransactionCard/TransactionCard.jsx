@@ -10,6 +10,7 @@ const SERVER_BASE_URL = process.env.REACT_APP_SERVER_BASE;
 const TransactionCard = (props)=>{
     const { accessToken } = useAuth();
     const [errorState,setErrorState] = useState(false);
+    const [succesfulState,setSuccesfulState] = useState('');
     console.log(props.accountData);
 
 
@@ -94,6 +95,8 @@ const TransactionCard = (props)=>{
 
             props.onrefetch();
 
+            setSuccesfulState("Succesful Transaction");
+
 
 
 
@@ -111,7 +114,13 @@ const TransactionCard = (props)=>{
                 setErrorState(false);
             },3000)
         }
-    },[errorState])
+
+        if(succesfulState){
+            setTimeout(()=>{
+                setSuccesfulState('');
+            },3000)
+        }
+    },[errorState,succesfulState]);
 
 
 
