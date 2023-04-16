@@ -98,7 +98,7 @@ const DashBoardPage = ()=>{
                         {(dashboardPageState===1) && <Home dashboardData = {data} onHomeClick={onHomeDashboard} onAccountsClick={onBankAccountsDashboard} onJointAccountClick={onJointAccountDashboard}/> }
                         {(dashboardPageState===2) && <Accounts accountData={data} onSingleAccountClick={onSingleAccountDashboardClick} onrefetch = {refetch}/>} 
 
-                        {(dashboardPageState===4) && <SingleAccount accountData={accountDataState}/>}
+                        {(dashboardPageState===4) && <SingleAccount accountData={accountDataState} onrefetch={refetch}/>}
                     </div>
                 </main>
             </div>

@@ -2,6 +2,7 @@
 const express = require('express');
 const { getAccounts } = require('../controllers/logic/getAccounts');
 const { AccountDeletion } = require('../controllers/logic/delAccount');
+const { addTransaction } = require('../controllers/logic/transaction');
 const { PrismaClient } = require('@prisma/client'); 
 
 const router = express.Router();
@@ -68,6 +69,8 @@ router.post('/createAccount',async (req,res)=>{
 
 
 router.delete('/accountDel',AccountDeletion);
+
+router.post('/createTransaction',addTransaction);
 
 
 

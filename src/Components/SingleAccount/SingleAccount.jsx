@@ -1,10 +1,12 @@
 import React,{useState,useReducer,useEffect} from "react";
+import TransactionCard from "../TransactionCard";
 import './SingleAccount.css';
 
 
 const SingleAccount = (props)=>{
-    console.log(props.accountData);
-    console.log(JSON.stringify(props.accountData));
+    const [ transactionCardState,setTransactionCardState ] = useState(false);
+    // console.log(props.accountData);
+    // console.log(JSON.stringify(props.accountData));
 
 
 
@@ -13,7 +15,7 @@ const SingleAccount = (props)=>{
             <div id="account-balance" className="account-stat-card">
                 <h4>Balance</h4>
 
-                <p className="c-balance">${props.accountData.balance}</p>
+                <p className="c-balance">${parseFloat(props.accountData.balance).toFixed(2)}</p>
             </div>
             <div id="account-spending" className="account-stat-card">
                 <h4>Spending</h4>
@@ -23,7 +25,7 @@ const SingleAccount = (props)=>{
             <div id="account-deposit" className="account-stat-card">
                 <h4>Deposits</h4>
 
-                <p className="deposit">${props.accountData.transaction.filter(element=>element.transactionType==="Deposit").reduce((accumalator,a)=>accumalator+a.transactionAmount,0)}</p>
+                <p className="deposit">${parseFloat(props.accountData.transaction.filter(element=>element.transactionType==="Deposit").reduce((accumalator,a)=>accumalator+a.transactionAmount,0)).toFixed(2)}</p>
             </div>
 
             <div id="account-details-section">
@@ -53,24 +55,25 @@ const SingleAccount = (props)=>{
                                 <th className="table-header">Account To</th>
                                 <th className="table-header">Date</th>
                             </tr>
-                        </thead>
+                    </thead>
 
-                        <tbody>
-                            {props.accountData.transaction.map(element=>(
-                                <tr>
-                                    <td id="table-amount" style={(element.transactionType==="Transfer")?{color:"#26a526"}:{color:"red"}}>${element.transactionAmount}</td>
-                                    <td id="table-transactionType">{element.transactionType}</td>
-                                    <td id="table-accountTo-date">{(element.transactionType==="Transfer")?element.accountTo.substring(0,5) + "...":"N/A"}</td>
-                                    <td id="table-date">04-04-1988</td>
-                                </tr>
-                            ))}
-                        </tbody>
+                    <tbody>
+                        {props.accountData.transaction.map(element=>(
+                            <tr>
+                                <td id="table-amount" style={(element.transactionType==="Transfer" || element.transactionType==="Withdrawal")?{color:"red"}:{color:"#26a526"}}>${element.transactionAmount}</td>
+                                <td id="table-transactionType">{element.transactionType}</td>
+                                <td id="table-accountTo-date">{(element.transactionType==="Transfer")?element.accountTo.substring(0,5) + "...":"N/A"}</td>
+                                <td id="table-date">04-04-1988</td>
+                            </tr>
+                        ))}
+                    </tbody>
                 </table>
 
                 <div id="transaction-btn-container">
-                    <button>Add Transaction</button>
+                    <button onClick={()=>setTransactionCardState(true)}>Add Transaction</button>
                 </div>
             </div>
+            {transactionCardState && <TransactionCard accountData={props.accountData} onExitButton = {()=>setTransactionCardState(false)} onrefetch = {props.onrefetch}/>}
         </div>
     )
 }

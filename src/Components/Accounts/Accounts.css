@@ -49,11 +49,11 @@
     background-image: linear-gradient(rgb(0 0 0/40%) 0 0);
 } */
 
-.styled-table {
-    border-collapse: collapse;
+.styled-table{
     width: 95%;
+    /* max-width: 600px; */
     /* border: 2px solid red; */
-    margin: 25px auto;
+    margin: 0 auto;
     font-family: sans-serif;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
@@ -65,32 +65,32 @@
 }
 
 tr>td{
-    text-align: center;
+    text-align: center;  
 }
 
 tr>th{
-    padding: 0;
+    text-align: center;
+    padding: 1rem 0.2rem;
 }
 
 td{
-    padding: 0 0.1rem;
+    padding: 0 0rem;
+}
+
+.account-name{
+    word-break: break-word;   
 }
 
 .account-action-btn{
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.8rem;
     color: white;
     background-color: #3cb371;
     border-radius: 8px;
-    margin: 0.2rem 0;
+    /* margin: 0.2rem 0; */
 }
 
 .styled-table{
     text-align: center;
-}
-
-.styled-table th,
-.styled-table td {
-    /* padding: 12px 15px; */
 }
 
 .styled-table tbody tr {
@@ -133,7 +133,7 @@ td{
 
 @media screen and (min-width:700px){
     tr>td{
-        text-align: left;
+        /* text-align: left; */
     }
 
     
@@ -151,6 +151,7 @@ td{
     .account-actions{
         display: flex;
         flex-direction: row;
+        justify-content: center;
     }
 
     .view-btn-container{

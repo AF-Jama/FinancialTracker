@@ -33,7 +33,7 @@ const Home = (props)=>{
             <div className="dashboard-card" id="total-spent-card">
                 <h5>Spent</h5>
 
-                <p>${(props.dashboardData?.statusCode===200)?props.dashboardData?.accountDetails[0]?.accounts.reduce((accumalator,a)=>accumalator+a.transaction.reduce((accumalator2,b)=>accumalator2+b.transactionAmount,0),0):"Loading.."}</p>
+                <p>${(props.dashboardData?.statusCode===200)?parseFloat(props.dashboardData?.accountDetails[0]?.accounts.reduce((accumalator,a)=>accumalator+a.transaction.reduce((accumalator2,b)=>accumalator2+b.transactionAmount,0),0)).toFixed(2):"Loading.."}</p>
             </div>
 
             <div id="home-action-container">

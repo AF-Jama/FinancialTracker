@@ -1,0 +1,68 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#transaction-card-container{
+    width: 95%;
+    max-width: 600px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: lightgrey;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+#transaction-card-container>h2{
+    font-size: 1.2rem;
+    margin: 0 0 1rem 0;
+}
+
+#exit-btn-container{
+    position: absolute;
+    top: 0;
+    right: 5px;
+}
+
+.transaction-input{
+    max-width: 300px;
+    margin: 1rem auto;
+}
+
+.transaction-input>input{
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 8px;
+}
+
+.transaction-input>select{
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 8px;
+}
+
+.transaction-btn-container{
+    position: absolute;
+    display: flex;
+    gap: 0 10px;
+    bottom: 5px;
+    right: 5px;
+}
+
+.transaction-btn button{
+    padding: 0.2rem 1rem;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+#transaction-submit-btn>button{
+    background-color: #26a526;
+}
+
+#transaction-cancel-btn>button{
+    background-color: red;
+}

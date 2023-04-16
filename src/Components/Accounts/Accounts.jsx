@@ -51,7 +51,7 @@ const Accounts = (props)=>{
                         <tr>
                             <th>Name</th>
                             <th>Type</th>
-                            <th>Count</th>
+                            <th className="count">Transaction Count</th>
                             <th>Actions</th>
                         </tr>
                     </thead>

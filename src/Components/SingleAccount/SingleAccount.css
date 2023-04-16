@@ -126,13 +126,18 @@
     padding: 1rem;
 }
 
-/* .transaction-table{
+.transaction-table{
     width: 98%;
     max-width: 800px;
     max-height: 250px;
     padding: 0 1rem;
     overflow: scroll;
-} */
+}
+
+.transaction-table>tbody{
+    max-height: 100px;
+    overflow: scroll;
+}
 
 /* .styled-table {
     border-collapse: collapse;

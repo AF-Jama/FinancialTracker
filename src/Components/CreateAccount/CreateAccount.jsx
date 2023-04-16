@@ -108,6 +108,7 @@ const CreateAccount = (props)=>{
 
                 <div className="input-group">
                     <select id="account-types" name="accounts" placeholder="Your Car" onChange={(event)=>dispatch({type:event.target.value})}>
+                        <option value=""></option>
                         <option value="Basic">Basic</option>
                         <option value="Business">Business</option>
                         <option value="Corporate">Corporate</option>
