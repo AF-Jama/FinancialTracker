@@ -82,10 +82,10 @@ const LandingPage = ()=>{
                             </div>
                         </div>
     
-                        <div id="results-section-container">
+                        {/* <div id="results-section-container">
                             <div id="slide-container">
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </main>           
             </div>

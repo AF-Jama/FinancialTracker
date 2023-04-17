@@ -8,6 +8,12 @@ import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
+if (process.env.REACT_APP_NODE_ENV === 'Production') {
+  console.log = () => {}
+  console.error = () => {}
+  console.debug = () => {}
+}
+
 root.render(
   <React.StrictMode>
     <BrowserRouter>

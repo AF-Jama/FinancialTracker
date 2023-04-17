@@ -29,7 +29,7 @@ app.use(cors());
 app.use(express.json())
 
 
-app.get("/",(req,res)=>{
+app.get("/financial",(req,res)=>{
     return res.json({
         "x":"SUCCESFUL"
     })
@@ -67,6 +67,6 @@ app.use('/account',jwtMiddleware,accountRouter); // protected routes
 
 
 
-app.listen(process.env.PORT||5000,()=>{
+app.listen(process.env.PORT1||5000,()=>{
     console.log(`Listening on port ${process.env.PORT||5000}`)
 }) // server listens on port specified in env variables or port 5000 
