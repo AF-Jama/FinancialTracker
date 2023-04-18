@@ -24,3 +24,6 @@ yarn-error.log*
 
 #env file
 .env
+
+#docker-compose.yml file
+docker-compose.yml
