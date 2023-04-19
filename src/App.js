@@ -7,6 +7,7 @@ import SideBar from './Components/SideBar';
 import CreateAccount from './Components/CreateAccount';
 import SignUpPage from './Pages/SignUpPage';
 import LoginPage from './Pages/LoginPage';
+import NotFoundPage from './Pages/NotFoundPage';
 import { Routes,Route } from 'react-router';
 import './App.css';
 
@@ -22,6 +23,7 @@ function App() {
         <Route path='/side' element={<SideBar/>}/>
         <Route path='/create' element={<SignUpPage/>}/>
         <Route path='/login' element={<LoginPage/>}/>
+        <Route path='*' element={<NotFoundPage/>}/>
       </Routes>
 
     </div>

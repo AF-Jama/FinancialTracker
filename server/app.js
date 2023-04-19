@@ -2,6 +2,7 @@ const express = require('express');
 const { PrismaClient } = require('@prisma/client');
 const { createClient } = require('redis');
 const fs = require('fs');
+const https = require('https');
 const cors = require('cors');
 const { jwtMiddleware } = require('./middleware/jwtMiddleware');
 const { authRouter } = require('./routes/auth.js');
@@ -16,6 +17,17 @@ const prisma = new PrismaClient();
 
 const app = express();
 
+https
+  .createServer(
+		// Provide the private and public key to the server by reading each
+		// file's content with the readFileSync() method.
+    {
+      key: fs.readFileSync("key.pem"),
+      cert: fs.readFileSync("csr.pem"),
+    },
+    app
+  )
+
 // app.use(function(req, res, next) {
 //     res.header('Access-Control-Allow-Credentials', true);
 //     res.header('Access-Control-Allow-Origin', "http://localhost:3000"); // FLAG - MUST CHANGE ORIGIN TO FINAL ORIGIN WHEN HOSTED
@@ -23,6 +35,12 @@ const app = express();
 //     res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
 //     next();
 //   });
+
+if (process.env.SERVER_NODE_ENV === "Production"){
+    console.log = () => {}
+    console.error = () => {}
+    console.debug = () => {}
+}
 
 app.use(cors());
 
