@@ -1,8 +1,6 @@
 const express = require('express');
 const { PrismaClient } = require('@prisma/client');
 const { createClient } = require('redis');
-const fs = require('fs');
-const https = require('https');
 const cors = require('cors');
 const { jwtMiddleware } = require('./middleware/jwtMiddleware');
 const { authRouter } = require('./routes/auth.js');
@@ -16,17 +14,6 @@ const prisma = new PrismaClient();
 // client.on()
 
 const app = express();
-
-https
-  .createServer(
-		// Provide the private and public key to the server by reading each
-		// file's content with the readFileSync() method.
-    {
-      key: fs.readFileSync("key.pem"),
-      cert: fs.readFileSync("cert.pem"),
-    },
-    app
-  )
 
 // app.use(function(req, res, next) {
 //     res.header('Access-Control-Allow-Credentials', true);
