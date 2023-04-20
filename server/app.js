@@ -15,13 +15,23 @@ const prisma = new PrismaClient();
 
 const app = express();
 
-// app.use(function(req, res, next) {
-//     res.header('Access-Control-Allow-Credentials', true);
-//     res.header('Access-Control-Allow-Origin', "http://localhost:3000"); // FLAG - MUST CHANGE ORIGIN TO FINAL ORIGIN WHEN HOSTED
-//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-//     res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
-//     next();
-//   });
+app.use(cors({
+    origin:"http://financialtracker.s3-website-us-east-1.amazonaws.com",
+    credentials:true,
+    methods: ['GET', 'PUT', 'POST',"DELETE"], 
+    allowedHeaders: ['Content-Type', 'Authorization', 'x-csrf-token'], 
+    maxAge: 600, 
+    exposedHeaders: ['*', 'Authorization','set-cookie'] 
+  
+}))
+  
+app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Origin', "http://financialtracker.s3-website-us-east-1.amazonaws.com");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+    next();
+});
 
 if (process.env.SERVER_NODE_ENV === "Production"){
     console.log = () => {}
