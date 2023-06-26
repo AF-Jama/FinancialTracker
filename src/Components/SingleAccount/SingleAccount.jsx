@@ -38,6 +38,7 @@ const SingleAccount = (props)=>{
                 <p className="account-details" id="account-type"><span>Type</span>: {props.accountData.accountType}</p>
                 <p className="account-details" id="account-balance"><span>Starting balance</span>: 0</p>
                 <p className="account-details" id="account-balance-alert"><span>Low Balance Alert</span>: None</p>
+                <p className="account-details" id="account-balance-alert"><span>Account Id</span>: {props.accountData.accountId}</p>
 
                 <div id="account-details-btn-container">
                     <div id="edit-btn-container" className="account-details-btns">

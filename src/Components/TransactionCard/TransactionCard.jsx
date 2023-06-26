@@ -65,6 +65,8 @@ const TransactionCard = (props)=>{
             if(!stateTransactionType) throw new Error("Transaction type must be specified");
 
             if(stateTransactionType==="Transfer" && !stateAccountTo) throw new Error("The account being funds are being tranferred to must be specified");
+
+            if(stateAccountTo===props.accountData.accountId) throw new Error("Cannot transfer to your own account");
             
             if(stateTransactionType==="Deposit" && ((parseFloat(stateAmount) + balance)>accountLimit) ) throw new Error("Cannot Deposit an amount that will exceed your account limit");
             

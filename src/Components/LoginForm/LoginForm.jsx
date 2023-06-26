@@ -85,13 +85,14 @@ const LoginForm = ()=>{
                 <p>{errors.email?.message}</p>
             </div>
             <div className="input-group">
-                <input style={{color:"black"}} className="input-text-form" {...register('password',{
+                <input type="password" style={{color:"black"}} className="input-text-form" {...register('password',{
                     minLength:12,
                     maxLength:50,
                     required:"Password must be valid",
                     pattern:{
                         value:/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
                     }
+
                 })} placeholder="Password" />
                 <p>{errors.master_password?.message}</p>
             </div>

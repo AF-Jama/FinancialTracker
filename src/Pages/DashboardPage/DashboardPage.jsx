@@ -54,6 +54,7 @@ const DashBoardPage = ()=>{
 
         dispatch({payload:accountData});
         // console.log(accountData);
+        console.log(accountData);
         setDashboardPageState(4);
     }
 
