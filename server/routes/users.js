@@ -28,6 +28,10 @@ router.get('/email/validity', async (req,res)=>{
 router.get('/username/validity', async (req,res)=>{
     const { username } = req.query; // returns username query
     console.log("HTT");
+    
+    let foo = await prisma.user.count();
+
+    console.log(`Number is ${foo}`);
 
     try{
         await prisma.user.findUniqueOrThrow({
@@ -40,6 +44,7 @@ router.get('/username/validity', async (req,res)=>{
             result:false 
         }) // returns false as email exists
     }catch(error){
+        console.log(error);
         return res.json({
             result:true
         }) // returns true as email does not exist

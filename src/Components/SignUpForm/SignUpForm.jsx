@@ -109,11 +109,12 @@ const SignUpForm = ()=>{
         fetch(`${SERVER_BASE_URL}/users/username/validity?username=${event.target.value}`)
         .then(res=>res.json())
         .then(res=>{
-            if(!res){
-                dispatch({type:"UPDATE",payload:{value:event.target.value,validity:false}});
+            console.log(res.result);
+            if(res.result){
+                dispatch({type:"UPDATE",payload:{value:event.target.value,validity:true}});
                 return;    
             }
-            dispatch({type:"UPDATE",payload:{value:event.target.value,validity:true}});
+            dispatch({type:"UPDATE",payload:{value:event.target.value,validity:false}});
         })
         .catch(error=>{
             dispatch({type:"UPDATE",payload:{value:event.target.value,validity:false}});
@@ -140,12 +141,13 @@ const SignUpForm = ()=>{
         fetch(`${SERVER_BASE_URL}/users/email/validity?email=${event.target.value}`)
         .then(res=>res.json())
         .then(res=>{
-            if(!res){
-                emailDispatch({type:"UPDATE",payload:{value:event.target.value,validity:false}});
+            console.log(res);
+            if(res.result){
+                emailDispatch({type:"UPDATE",payload:{value:event.target.value,validity:true}});
                 return;    
             }
             console.log("dsds")
-            emailDispatch({type:"UPDATE",payload:{value:event.target.value,validity:true}});
+            emailDispatch({type:"UPDATE",payload:{value:event.target.value,validity:false}});
             return;
         })
         .catch(error=>{
@@ -201,7 +203,7 @@ const SignUpForm = ()=>{
             </div>
 
             <div className="input-group">
-                <input type="text" className="input-text-form" style={(errors.email?.message)?{border:"2px solid red"}:{border:"2px solid transparent"}} {...register('email',{
+                <input type="text" className="input-text-form" style={(errors.email?.message || email.validity===false)?{border:"2px solid red"}:{border:"2px solid transparent"}} {...register('email',{
                     required:"Email is required",
                     pattern:{
                         value:/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
